@@ -1,1 +1,14 @@
 In this Repository. I documented how I set up VMs that I will be using in web security. I also connected them to each other and pinging to make sure they are connected
+
+The following VMs were used
+VMWare workstation
+Kali-Linux-2025
+Window10 operating System
+Windows Server 2016
+Ubuntu Web Server
+Metaspoitable2-linux
+
+Installed the VMWare workstation from the Vmware website
+
+I downloaded all the files in a folder.
+
