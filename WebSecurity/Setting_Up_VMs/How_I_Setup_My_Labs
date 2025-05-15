@@ -1,0 +1,162 @@
+Step 1.
+I installed the following VMware. I will not be providing the VM files itself but can share the website where I downloaded them from
+
+kali-linux-2025
+Windows10 Operating System
+Windows Server 2016
+Ubuntu Web Server
+Metaspolitable-2
+
+....Add Image her for Downloaded File
+
+Step 2
+As a security aware individual, always confirm checksum with the software vendor
+I ran the command below on my cmd to confirm checksum for the VMs
+
+Get-FileHash -Algorithm SHA1 –Path ".\C:\*.*"
+......Add Image......
+
+See Checksum file from the vendor
+metasploitable-linux-2.0.0.zip 3BD77207F74B7031E50F7CD83539BD401B1284FF
+ubuntu-18.04-live-server-amd64.iso 0B3490DE9839C3918E35F01AA8A05C9AE286FC94
+Win10.7z 481378AF6CE94A16CBED1D70C49BD9E00AF1E5B2
+win2016x64.7z 18608362F51FDC9A20F70534A8F0108BDD1CDDD4
+
+Step 3
+Now I needed to start setting up the VM. I started with Kali.
+I opened it up on the VMware workstation, entered the credentials.
+I ran apt-get-update and apt-get-upgrade to update the VM
+
+I changed the hostname
+nano /etc/hostname and replaced kali with my username.
+
+I updated the host file to prevent some potential issues with name resolution
+nano /etc/hosts 
+
+Added 
+127.0.0.1  username
+127.0.0.1 username-kali
+
+Now added the entry for the webservers I will be buliding.
+10.0.0.200  ubuntuwebserver
+10.0.0.201  windowserver
+10.0.0.202  windows10
+
+Step4
+Creating LAN Segment
+On VMware, I created a Lan Segment by clicking on VM >> Settings >> Add New Network Adapter
+Slect LAN Segment, named it and modified it to use static IP address
+
+Next I modified the /etc/network/interfaces file and added the IP information for the newly created network adapter eth1
+address 10.0.0.99
+netmask 255.255.255.0
+
+Saved the file and exit. Reboot
+
+....Add Image....
+
+
+Preparing My Windows 10
+Extracted the VM and loaded it to the VMWare workstation
+Changed the network adapter to the LAN Segment created earlier.
+Modified the disk space
+Power on the Windows 10 VM
+Changed computer name
+Disable firewall
+Assign Ip statically
+IP Address: 10.0.0.100
+Subnet Mask: 255.255.255.0
+
+Ping your Kali Linux from cmd
+.....Add Image....
+
+Preparing My Windows server 2016
+Extracted the VM and loaded it to the VMWare workstation
+Changed the network adapter to the LAN Segment created earlier.
+Modified the disk space
+Power on the Windows 10 VM
+Changed computer name
+Disable firewall
+Assign Ip statically
+IP Address: 10.0.0.201
+Subnet Mask: 255.255.255.0
+Ping the windows server from Kali linux
+
+....Add Image...
+
+
+
+Setup Metasploitable server
+Extracted the VM and loaded it to the VMWare workstation
+Changed the network adapter to the LAN Segment created earlier.
+Login with the username and password
+Changed the hostname
+modified the Network Interfaces
+nano /etc/network/interfaces
+address 10.0.0.202
+▪ netmask 255.255.255.0 
+▪ network 10.0.0.0 
+▪ broadcast 10.0.0.255
+
+Reboot the VM
+ping the metasploitable server from Kali
+
+
+Setup Ubuntu web server
+Loaded the webserver, configured and installed it
+After installation. Changed the hostname
+Add another network adapter to the VM
+Reboot the VM
+Moved into the /etc/netplan directory and issue ls -all command
+there is a file called with the yaml file copy the file and renamed the new file
+Used a text editor to modify the new file
+
+....Add image....
+
+Saved file and exit
+Apploed changes
+Sudo netplan apply
+
+Installing Mutillidae on the Ubuntu server
+
+Select America and Toronto as your location
+sudo dpkg-reconfigure tzdata
+▪ Update the date and time on your Ubuntu Server
+sudo date -s "$(wget -qSO- --max-redirect=0 google.com 2>&1 | grep Date: | cut -d' ' -f5-8)Z"
+▪ Restart the VM:
+sudo shutdown –r now
+▪ Once the VM comes back up, login with your FOLusername and password of Ubuntu1
+▪ Update your repository list
+sudo apt-get update
+
+Update your hosts file to include your FOLusername-uws in the list. See example below:
+sudo nano /etc/hosts
+
+Install Apache Server
+sudo apt-get install apache2 apache2-utils
+▪ Install the MYSQL server:
+sudo apt-get install mysql-server
+▪ Configure the MYSQL installation to work with Mutillidae:
+sudo mysql –u root
+use mysql;
+update user set authentication_string=PASSWORD('') where user='root';
+update user set plugin='mysql_native_password' where user='root';
+flush privileges;
+quit;
+▪ Restart MySQL:
+sudo service mysql restart
+▪ Install unzip
+apt-get install unzip
+▪ Download a Mutillidae installation script to your /var/www/ directory by using the following:
+cd /var/www
+sudo wget http://transpirenetworks.com/mutillidae_setup.sh
+(As an alternative, mutillidae_setup.7z is also available with a password of info6076)
+
+Execute the Mutillidae installation script:
+sudo bash mutillidae_setup.sh
+▪ Unzip the LATEST-mutillidae-2.6.62.zip file
+sudo unzip LATEST-mutillidae-2.6.62.zip
+
+Open the web browser in Kali and navigate to folusername-uws/mutillidae
+▪ You may need to click on setup/reset database
+▪ If you have done everything correctly, your results should look like the example below:
