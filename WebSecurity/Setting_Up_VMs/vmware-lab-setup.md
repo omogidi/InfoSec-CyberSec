@@ -11,7 +11,7 @@ I installed the following VMs. I will not be providing the VM files themselves b
 - `Ubuntu Web Server`
 - `Metasploitable-2`
 
-![Downloaded VMs](path/to/downloaded-files-image.png)
+![Downloaded VMs](https://github.com/omogidi/InfoSec-CyberSec/blob/99ce7fb5ef1c68a4e0645acf3cd3e32ea7484cfe/WebSecurity/Setting_Up_VMs/Images/01-Downloaded%20Files.png)
 
 ---
 
@@ -25,7 +25,7 @@ I ran the following command in **Command Prompt** to confirm checksums for the V
 Get-FileHash -Algorithm SHA1 –Path ".\C:\*.*"
 ```
 
-![Checksum Confirmation](path/to/checksum-image.png)
+![Checksum Confirmation](https://github.com/omogidi/InfoSec-CyberSec/blob/99ce7fb5ef1c68a4e0645acf3cd3e32ea7484cfe/WebSecurity/Setting_Up_VMs/Images/02-SHA%20Confirmation.png))
 
 **Vendor Checksum File Example:**
 
@@ -97,7 +97,7 @@ netmask 255.255.255.0
 
 Reboot the VM.
 
-![LAN Segment Config](path/to/lan-segment-image.png)
+![LAN Segment Config](https://github.com/omogidi/InfoSec-CyberSec/blob/99ce7fb5ef1c68a4e0645acf3cd3e32ea7484cfe/WebSecurity/Setting_Up_VMs/Images/03-hostname%20and%20net%20interface.png))
 
 ---
 
@@ -122,7 +122,7 @@ Subnet Mask: 255.255.255.0
 ping 10.0.0.99
 ```
 
-![Ping from Windows](path/to/ping-kali-image.png)
+![Ping from Windows](https://github.com/omogidi/InfoSec-CyberSec/blob/99ce7fb5ef1c68a4e0645acf3cd3e32ea7484cfe/WebSecurity/Setting_Up_VMs/Images/04-windows10.png)
 
 ---
 
@@ -147,7 +147,7 @@ Subnet Mask: 255.255.255.0
 ping 10.0.0.201
 ```
 
-![Ping Windows Server](path/to/ping-winserver-image.png)
+![Ping Windows Server](https://github.com/omogidi/InfoSec-CyberSec/blob/99ce7fb5ef1c68a4e0645acf3cd3e32ea7484cfe/WebSecurity/Setting_Up_VMs/Images/05-windowserver16.png)
 
 ---
 
@@ -194,7 +194,7 @@ ls -al
 
 - Copy and modify the YAML config file using a text editor.
 
-![Netplan Config](path/to/netplan-image.png)
+![Netplan Config](https://github.com/omogidi/InfoSec-CyberSec/blob/99ce7fb5ef1c68a4e0645acf3cd3e32ea7484cfe/WebSecurity/Setting_Up_VMs/Images/netplan%20file.png)
 
 - Save and apply changes:
 
@@ -226,7 +226,7 @@ sudo date -s "$(wget -qSO- --max-redirect=0 google.com 2>&1 | grep Date: | cut -
 sudo shutdown -r now
 ```
 
-- Log in with `FOLusername` and password: `Ubuntu1`
+- Log in with `Ubuntu-username` and password: `Ubuntu1`
 
 - Update repository:
 
@@ -242,7 +242,7 @@ sudo nano /etc/hosts
 
 Add:
 ```
-127.0.0.1  FOLusername-uws
+127.0.0.1  Ubuntu-username
 ```
 
 - Install Apache:
@@ -291,7 +291,7 @@ cd /var/www
 sudo wget http://transpirenetworks.com/mutillidae_setup.sh
 ```
 
-> Alternative: Use `mutillidae_setup.7z` with password `info6076`.
+> Alternative: Use `mutillidae_setup.7z` with password ``.
 
 - Execute the script:
 
@@ -313,7 +313,7 @@ http://FOLusername-uws/mutillidae
 
 > Click on **Setup / Reset Database** if needed.
 
-![Mutillidae Success](path/to/mutillidae-image.png)
+![Mutillidae Success](https://github.com/omogidi/InfoSec-CyberSec/blob/99ce7fb5ef1c68a4e0645acf3cd3e32ea7484cfe/WebSecurity/Setting_Up_VMs/Images/08-Mutillidae.png)
 
 ---
 
