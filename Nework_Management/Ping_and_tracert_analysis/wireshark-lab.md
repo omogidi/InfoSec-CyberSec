@@ -33,7 +33,7 @@ ping x.x.x.x
 
 You will begin to see captured traffic in Wireshark.
 
-*...Add Image...*
+![Ping](https://github.com/omogidi/InfoSec-CyberSec/blob/8dcf975fc16d5f49eac21d0e18336892afefbef6/Nework_Management/Ping_and_tracert_analysis/images/ping01.png)
 
 ### Explanation:
 
@@ -47,7 +47,7 @@ You will begin to see captured traffic in Wireshark.
   - **Header length**: 42 bytes
   - **Data portion**: 32 bytes
 
-*...Add Image...*
+![Ping](https://github.com/omogidi/InfoSec-CyberSec/blob/8dcf975fc16d5f49eac21d0e18336892afefbef6/Nework_Management/Ping_and_tracert_analysis/images/datinfo.png)
 
 ---
 
@@ -72,7 +72,6 @@ tracert www.example.com
 6. Allow the command to complete.
 7. Stop the Wireshark capture.
 
-*...Add Image...*
 
 ### Analysis:
 
