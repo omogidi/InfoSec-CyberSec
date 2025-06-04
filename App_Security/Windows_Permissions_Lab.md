@@ -1,4 +1,4 @@
-# INFO6003 Lab-04B: Windows Permissions and Access Control
+# Lab-04B: Windows Permissions and Access Control
 
 This lab guides you through exploring and managing NTFS permissions, Access Control Lists (ACLs), and file sharing security in a Windows environment.
 
@@ -14,6 +14,7 @@ This lab guides you through exploring and managing NTFS permissions, Access Cont
   * Server 2008: `Windows12`
   * Windows 7/10: `Windows1`
 
+See how to set_up these servers here
 ---
 
 ## Part 1: NTFS Permissions (Windows 7 VM)
@@ -152,20 +153,6 @@ icacls /?
 > Effective permissions = most restrictive between Share and NTFS.
 
 ---
-
-## Review Questions
-
-1. **What are file share security options?**
-2. **Why use file shares on a network?**
-3. **When both share and NTFS permissions are set, which takes precedence?**
-
-   * Answer: The most restrictive combination applies.
-
----
-
-## Final Step
-
-* Power down your VMs and take snapshots labeled `After Lab-04`.
 
 ---
 
